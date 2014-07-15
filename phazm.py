@@ -29,7 +29,8 @@ def phazm():
     id = 0
     while exists(phazm):
         id += 1
-    phazm = phazm + ' ' + str(id)
+    if id > 0:
+        phazm = phazm + ' ' + str(id)
     register(phazm)
     return phazm
 
