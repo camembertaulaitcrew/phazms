@@ -6,7 +6,7 @@ import sys
 import sqlite3
 import datetime
 
-MAX_LEN = 5
+MAX_LEN = 3
 MIN_LEN = 2
 DB_PATH = 'phazms.db'
 
@@ -27,16 +27,22 @@ class Phazms:
             if i:
                 phazm += '-'
             phazm += chunks[int(len(chunks) * random.random())]
-        id = 0
-        while self.exists(phazm):
-            id += 1
-        if id > 0:
+        id = 1
+        while True:
+            if id > 1:
+                trythis = phazm + ' ' + str(id)
+            else:
+                trythis = phazm
+            if not self.exists(trythis):
+                break
+            id = id + 1
+        if id > 1:
             phazm = phazm + ' ' + str(id)
         self.register(phazm)
         return phazm
 
     def exists(self, name):
-        return self.cursor.execute("SELECT COUNT(*) FROM phazms WHERE name=?", (name, )).fetchone() == 0
+        return self.cursor.execute("SELECT COUNT(*) FROM phazms WHERE name=?", (name, )).fetchone()[0] > 0
 
     def register(self, name):
         self.cursor.execute('INSERT INTO phazms(name, birthdate) VALUES(?, ?)', (name, str(datetime.datetime.now())))
@@ -44,4 +50,5 @@ class Phazms:
 
 if __name__ == '__main__':
     p = Phazms()
-    print 'Bienvenue a %s sur la planete Terre, on va bien s\'amuser!' % p.phazm()
+    for i in range(200):
+        print p.phazm()
