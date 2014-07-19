@@ -59,8 +59,3 @@ class Phazms:
         self.cursor.execute('INSERT INTO phazms(name, birthdate) VALUES(?, ?)', (name, str(datetime.datetime.now())))
         self.db.commit()
         return self.get_phazm(self.cursor.lastrowid)
-
-if __name__ == '__main__':
-    p = Phazms()
-    for i in range(200):
-        print p.phazm()
