@@ -20,7 +20,7 @@ class Phazms:
         """
         Generates a unique name for phazms.
         """
-        chunks = ['Jean', 'Jacques', 'Georges', 'Michel', 'Marcel', 'Raymond', 'Robert', 'Regis', 'Eugene', 'Francois', 'Yves', 'Yvette', 'Gertrude', 'Brigitte', 'Micheline', 'Oui', 'Non', 'Un-Gomme', 'Gros']
+        chunks = ['Jean', 'Jacques', 'Georges', 'Michel', 'Marcel', 'Raymond', 'Robert', 'Regis', 'Eugene', 'Francois', 'Yves', 'Yvette', 'Gertrude', 'Brigitte', 'Micheline', 'Oui', 'Non', 'Un-Gomme', 'Gros', 'Phil', 'Phil Coupon']
         strength = MIN_LEN + int(random.random() * (MAX_LEN - MIN_LEN))
         phazm = ''
         for i in range(strength):
