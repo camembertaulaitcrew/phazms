@@ -11,10 +11,10 @@ MIN_LEN = 2
 DB_PATH = 'phazms.db'
 
 class Phazms:
-    def __init__(self):
-        self.db = sqlite3.connect(DB_PATH)
+    def __init__(self, db_path=DB_PATH):
+        self.db = sqlite3.connect(db_path)
         self.cursor = self.db.cursor()
-        self.cursor.execute('CREATE TABLE IF NOT EXISTS phazms(name TEXT, birthdate TEXT)')
+        self.cursor.execute('CREATE TABLE IF NOT EXISTS phazms(id INTEGER PRIMARY KEY, name TEXT, birthdate TEXT)')
 
     def phazm(self):
         """
@@ -38,8 +38,19 @@ class Phazms:
             id = id + 1
         if id > 1:
             phazm = phazm + ' ' + str(id)
-        self.register(phazm)
-        return phazm
+        return self.register(phazm)
+
+    def raw_to_phazm(self, raw):
+        return {'id': raw[0], 'name': raw[1], 'birthdate': raw[2]}
+
+    def get_phazms(self):
+        res = []
+        for p in self.cursor.execute("SELECT * FROM phazms WHERE 1").fetchall():
+            res.append(self.raw_to_phazm(p))
+        return res
+
+    def get_phazm(self, id):
+        return self.raw_to_phazm(self.cursor.execute("SELECT * FROM phazms WHERE id=?", (id,)).fetchall()[0])
 
     def exists(self, name):
         return self.cursor.execute("SELECT COUNT(*) FROM phazms WHERE name=?", (name, )).fetchone()[0] > 0
@@ -47,6 +58,7 @@ class Phazms:
     def register(self, name):
         self.cursor.execute('INSERT INTO phazms(name, birthdate) VALUES(?, ?)', (name, str(datetime.datetime.now())))
         self.db.commit()
+        return self.get_phazm(self.cursor.lastrowid)
 
 if __name__ == '__main__':
     p = Phazms()
