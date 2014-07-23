@@ -5,7 +5,7 @@ import os
 import re
 
 from setuptools import setup, find_packages
-from version import __version__
+from phazms import __version__
 
 MODULE_NAME = 'phazms'
 
