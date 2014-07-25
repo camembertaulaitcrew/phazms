@@ -8,7 +8,7 @@ import datetime
 
 MAX_LEN = 3
 MIN_LEN = 2
-DB_PATH = 'phazms.db'
+DB_PATH = '/tmp/phazms.db'
 
 class Phazms:
     def __init__(self, db_path=DB_PATH):
