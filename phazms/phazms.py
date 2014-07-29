@@ -29,7 +29,8 @@ class Phazms:
             'Jean', 'Jacques', 'Georges', 'Michel', 'Marcel', 'Raymond',
             'Robert', 'Regis', 'Eugene', 'Francois', 'Yves', 'Yvette',
             'Gertrude', 'Brigitte', 'Micheline', 'Oui', 'Non', 'Un-Gomme',
-            'Gros', 'Phil', 'Phil Coupon'
+            'Gros', 'Phil', 'Phil Coupon', 'Gertrude', 'Philemon', 'Daniel',
+            'Esteban', 'David', 'Antoine',
         ]
         strength = MIN_LEN + int(random.random() * (MAX_LEN - MIN_LEN))
         phazm = ''
