@@ -11,6 +11,14 @@ MIN_LEN = 2
 DB_PATH = '/tmp/phazms.db'
 
 class Phazms:
+    chunks = [
+        'Jean', 'Jacques', 'Georges', 'Michel', 'Marcel', 'Raymond',
+        'Robert', 'Regis', 'Eugene', 'Francois', 'Yves', 'Yvette',
+        'Gertrude', 'Brigitte', 'Micheline', 'Oui', 'Non', 'Un-Gomme',
+        'Gros', 'Phil', 'Phil Coupon', 'Gertrude', 'Philemon', 'Daniel',
+        'Esteban', 'David', 'Antoine',
+    ]
+
     def __init__(self, db_path=DB_PATH):
         self.db = sqlite3.connect(db_path)
         self.cursor = self.db.cursor()
@@ -25,19 +33,12 @@ class Phazms:
         """
         Generates a unique name for phazms.
         """
-        chunks = [
-            'Jean', 'Jacques', 'Georges', 'Michel', 'Marcel', 'Raymond',
-            'Robert', 'Regis', 'Eugene', 'Francois', 'Yves', 'Yvette',
-            'Gertrude', 'Brigitte', 'Micheline', 'Oui', 'Non', 'Un-Gomme',
-            'Gros', 'Phil', 'Phil Coupon', 'Gertrude', 'Philemon', 'Daniel',
-            'Esteban', 'David', 'Antoine',
-        ]
         strength = MIN_LEN + int(random.random() * (MAX_LEN - MIN_LEN))
         phazm = ''
         for i in range(strength):
             if i:
                 phazm += '-'
-            phazm += chunks[int(len(chunks) * random.random())]
+            phazm += self.chunks[int(len(self.chunks) * random.random())]
         id_ = 1
         while True:
             if id_ > 1:
