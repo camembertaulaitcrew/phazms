@@ -37,7 +37,7 @@ class Phazms:
         """
         Generates a unique name for phazms.
         """
-        strength = MIN_LEN + int(random.random() * (MAX_LEN - MIN_LEN))
+        strength = MIN_LEN + int(round(random.random(), 0) * (MAX_LEN - MIN_LEN))
         phazm = ''
         for i in range(strength):
             if i:
