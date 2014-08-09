@@ -16,7 +16,11 @@ class Phazms:
         'Robert', 'Regis', 'Eugene', 'Francois', 'Yves', 'Yvette',
         'Gertrude', 'Brigitte', 'Micheline', 'Oui', 'Non', 'Un-Gomme',
         'Gros', 'Phil', 'Phil Coupon', 'Gertrude', 'Philemon', 'Daniel',
-        'Esteban', 'David', 'Antoine',
+        'Esteban', 'David', 'Antoine', 'Diego', 'Junior', 'Gerard', 'Charles',
+        'Michael', 'Regis', 'Anakin', 'Renaud', 'Yannick', 'Sebastien',
+        'Manfred', 'Julien', 'Vadim', 'James', 'Louis', 'Gregoire', 'Vincent',
+        'Nicolas', 'Sarah', 'Jeanne', 'Daniel', 'Marie', 'Steve', 'Romain',
+        'Pierre', 'Coralie', 'Laurent', 'Esteban', 'Axel', 'Richard', 'Bob',
     ]
 
     def __init__(self, db_path=DB_PATH):
