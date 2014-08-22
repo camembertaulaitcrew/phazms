@@ -30,10 +30,11 @@ class Phazms:
             'CREATE TABLE IF NOT EXISTS phazms('
             '  id INTEGER PRIMARY KEY, '
             '  name TEXT, '
-            ' birthdate TEXT'
+            '  birthdate TEXT, '
+            '  owner TEXT'
             ')')
 
-    def phazm(self):
+    def phazm(self, owner):
         """
         Generates a unique name for phazms.
         """
@@ -54,10 +55,10 @@ class Phazms:
             id_ = id_ + 1
         if id_ > 1:
             phazm = phazm + ' ' + str(id_)
-        return self.register(phazm)
+        return self.register(phazm, owner)
 
     def raw_to_phazm(self, raw):
-        return {'id': raw[0], 'name': raw[1], 'birthdate': raw[2]}
+        return {'id': raw[0], 'name': raw[1], 'birthdate': raw[2], 'owner': raw[3]}
 
     def get_phazms(self):
         res = []
@@ -75,9 +76,9 @@ class Phazms:
             "SELECT COUNT(*) FROM phazms WHERE name=?", (name, )
         ).fetchone()[0] > 0
 
-    def register(self, name):
+    def register(self, name, owner):
         self.cursor.execute(
-            'INSERT INTO phazms(name, birthdate) VALUES(?, ?)',
+            'INSERT INTO phazms(name, birthdate, owner) VALUES(?, ?, ?)',
             (name, str(datetime.datetime.now()))
         )
         self.db.commit()
