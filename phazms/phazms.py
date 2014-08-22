@@ -79,7 +79,7 @@ class Phazms:
     def register(self, name, owner):
         self.cursor.execute(
             'INSERT INTO phazms(name, birthdate, owner) VALUES(?, ?, ?)',
-            (name, str(datetime.datetime.now()))
+            (name, str(datetime.datetime.now()), owner)
         )
         self.db.commit()
         return self.get_phazm(self.cursor.lastrowid)
