@@ -26,7 +26,8 @@ class Phazms:
         'Jacquie', 'Rodolphe', 'Auguste', 'Augustin', 'Hypolite', 'Gregory',
         'Jacqueline', 'Rodrigo', 'Maurice', 'Rocco', 'Chang', 'Bruce', 'Nassim',
         'Gwendal', 'Leo', 'Leonard', 'Enzo', 'Claire', 'Manon', 'Camille',
-        'Jonathan', 'Solvik',
+        'Jonathan', 'Solvik', 'Gordon', 'Murdoch', 'Anakin', 'Kyle', 'Ken',
+        'Ryu', 'Agatha',
     ]
 
     def __init__(self, db_path=DB_PATH):
